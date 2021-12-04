@@ -6,7 +6,7 @@ def f1():
     x = 4
 
 def f2(a, b):
-    x = 3
+    global x
     return a + b + x
 
 total = f2(1, 2)
@@ -49,30 +49,32 @@ print(compute_bill(lista_de_compras))
 # Figura abaixo, crie um algoritmo que ajude a descobrir a quantidade de leds necessário para escrever uma palavra.
 """
 dict = {
-    "A": 20,
-    "E": 20,
-    "S": 17,
-    "O": 20,
-    "U": 19,
-    "L": 13,
-    "P": 18,
-    "R": 22,
-    "V": 17,
-    "T": 13,
+    "1": 13,
+    "2": 16,
+    "3": 16,
+    "4": 17,
+    "5": 19,
+    "6": 19,
+    "7": 13,
+    "8": 21,
+    "9": 19,
+    "0": 20,
 }
 
 while(True):
-    word = str(input("Digite uma palavra: ")).upper()
+    # word = str(input("Digite uma palavra: ")).upper()
+    numero = str(input("Digite o número: "))
 
     ledsNumber = 0
 
-    for letter in word:
-        if (letter in dict):
-            ledsNumber += dict[letter]
+    for character in numero:
+        if (character in dict):
+            ledsNumber += dict[character]
         else:
             print("Não é possível mostrar essa palavra completa")
             break
-    print("N de LEDS: %i" %ledsNumber)
+    # print("N de LEDS: %i" %ledsNumber)
+    print("%i LEDs" % ledsNumber)
 """
 # Dado o programa abaixo, Preencha corretamente a Tabela com os valores da matriz após a execução do programa:
 """
@@ -88,34 +90,34 @@ print(matriz)
 """
 # Analise o programa abaixo e responda a questão:
 """
-C = 0
-D = 0
+A = 0
+B = 0
 
-for contador in range(2, 5):
-    if (C == 4):
-        C += 3
+for contador in range(0, 4):
+    if (A == 4):
+        A += 2
     else:
-        C += 2
+        A += 1
 
-for contador in range(3, 8):
-    if (D == 4):
-        D += 1
+for contador in range(0, 6):
+    if (B == 4):
+        B += 2
     else:
-        D += 2
+        B += 1
 
-while(C < 4):
-    if(D == 4):
-        D += 1
+while(A < 4):
+    if(B == 4):
+        B += 2
     else:
-        D += 2
+        B += 1
 
-while(D < 4):
-    if(D == 4):
-        C += 3
+while(B < 4):
+    if(B == 4):
+        B += 2
     else:
-        C += 2
+        B += 1
 
-print("C: %i e D: %i" %(C, D))
+print("A: %i e B: %i" %(A, B))
 """
 # Um programador precisa realizar o cálculo da média dos valores contidos dentro de alguns arquivos, esses arquivos
 # possuem os valores de leitura da corrente elétrica, no entanto o aparelho que realiza a leitura está apresentando
@@ -138,4 +140,33 @@ def mediaCorrente(file):
     return int(sum/sampleQtd)
 
 print(mediaCorrente("./corrente.txt"))
+"""
+# Uma das formas de medir a corrente elétrica em um condutor é usando um resistor shunt, principalmente em
+# condutores com correntes elevadas. Para realizar a leitura da corrente elétrica, basta medir a tensão elétrica
+# do resistor shunt e calcular o valor da corrente elétrica pela formula da Lei de Ohm (V=R.I). Escreva uma função
+# chamada leituraCorrente() que recebe como parâmetro o nome de um arquivo (os arquivos já estão previamente 
+# adicionados no Moodle para os testes),  e realiza o calculo da corrente elétrica em relação aos valores
+#  de tensão em mV contidas no arquivo, imprimindo os valores da corrente elétrica no tipo inteiro.
+"""
+def leituraCorrente(file):
+    shuntModule = 100/75
+
+    file = open(file, 'r')
+    for line in file:
+        line = float(line.replace("\n", "").replace("mV", ""))
+        print("%i A" % int(line*shuntModule))
+
+leituraCorrente("medidasShunt.txt")
+"""
+# Qual será a saída do seguinte código em Python?
+"""
+def altera(var, lst):
+    var = 1
+    lst[var] = 44
+
+k = 3
+a = [1, 2, 3]
+altera(k, a)
+print(k)
+print(a)
 """
